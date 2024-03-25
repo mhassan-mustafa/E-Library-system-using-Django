@@ -29,7 +29,7 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 
-### Integrating Email System
+4. **Integrating Email System**:
 
 To integrate the email system for OTP verification and sending book request notifications, follow these steps:
 
