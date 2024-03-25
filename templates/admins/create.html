@@ -1,0 +1,50 @@
+{% extends 'admins/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h2 class="text-center pt-4">Add new book</h2>
+    <div class="w-50 mx-auto mb-3 card px-4 py-3 shadow-lg position-static">
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% for message in messages %}
+            <div class="alert alert-danger alert-dismissible fade show py-1 ps-5 mt-4" role="alert">
+              {{ message }}
+              <button style="height: 5px; width: 5px;" type="button" class="btn-close p-1 m-2" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+
+        <div class="mb-2">
+          <label for="exampleInputEmail1" class="form-label">Title:</label>
+          <input type="text" class="form-control" required name="title" aria-describedby="emailHelp" />
+        </div>
+        <div class="mb-2">
+          <label for="exampleInputPassword1" class="form-label">Author:</label>
+          <input type="text" class="form-control" required name="author" id="exampleInputPassword1" />
+        </div>
+        <div class="mb-2">
+          <label for="exampleInputPassword1" class="form-label">ISBN_No:</label>
+          <input type="number" class="form-control" required name="isbn" id="exampleInputPassword1" />
+        </div>
+        <div class="mb-2">
+          <label for="exampleInputPassword1" class="form-label">Rating:</label>
+          <input type="number" class="form-control" required name="rating" id="exampleInputPassword1" />
+        </div>
+        <div class="mb-2">
+          <label for="exampleInputPassword1" class="form-label">Pages:</label>
+          <input type="number" class="form-control" required name="pages" id="exampleInputPassword1" />
+        </div>
+        <div class="mb-2">
+          <label for="exampleInputPassword1" class="form-label">Image:</label>
+          <input type="file" class="form-control" required name="image" id="exampleInputPassword1" />
+        </div><br />
+        <div class="mb-2">
+          <label for="exampleInputPassword1" class="form-label">Pdf:</label>
+          <input type="file" class="form-control" required name="pdf" id="exampleInputPassword1" />
+        </div><br />
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary w-25">Add Book</button>
+        </div>
+      </form>
+    </div>
+{% endblock %}

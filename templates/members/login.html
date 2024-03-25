@@ -1,0 +1,43 @@
+{% extends 'members/base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="admin-login">
+    <div class="main-div text-center container pt-4">
+
+      <div class="login">
+        <p class="heading fs-2 fw-bold mb-5">Member Login</p>
+        <form method="post">
+          {% csrf_token %}
+          {% if messages %}
+            {% for message in messages %}
+              {% if message_id == 1 %}
+                <div class="alert alert-danger alert-dismissible fade show py-1 ps-3" role="alert">
+                  {{ message }} <a href="{% url 'members:verify' account_id %}">Verify</a>
+                  <button style="height: 5px; width: 5px;" type="button" class="btn-close p-1 m-2" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% comment %} <a href="{% url 'members:verify' account_id %}"><button type="button" class="btn btn-primary">verify your Email >></button></a> {% endcomment %}
+              {% else %}
+                <div class="alert alert-danger alert-dismissible fade show py-1 ps-3" role="alert">
+                  {{ message }}
+                  <button style="height: 5px; width: 5px;" type="button" class="btn-close p-1 m-2" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+          <label class="fs-5 fw-bold float-start" for="">Email:</label><br />
+          <input class="input w-75 ps-3" type="email" name="email" /><br />
+          <label class="fs-5 fw-bold float-start" for="">Password:</label><br />
+          <input class="input w-75 ps-3" type="password" name="password" />
+
+          <div class="text-center mb-4">
+            <p>
+              Not have an account ? <a href={% url 'members:register' %}>Register</a>
+            </p>
+            <button type="submit" class="btn btn-primary w-25">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

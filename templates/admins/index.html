@@ -1,0 +1,31 @@
+{% extends 'admins/base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="home">
+    <div class="main-div container text-center pt-5">
+      <p class="fs-4 fw-bold">Welcome to E-Library</p>
+      <p class="pt-2 pb-3 fs-4 fw-bold mb-2">Login as:</p>
+
+      <div class="buttons row mx-auto w-50">
+        <div class="col-6 p-5">
+          <a class="text-decoration-none text-black" href="{% url 'admins:admin_login' %}">
+            <div class="person text-center p-2">
+              <img class="mb-2" src="{% static 'img/admin.png' %}" alt="" />
+              <p class="fs-5 fw-bold p-0 m-0">Admin</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-6 p-5">
+          <a class="text-decoration-none text-black" href="{% url 'members:login' %}">
+            <div class="person text-center p-2">
+              <img class="img-fluid mb-2" src="{% static 'img/member.png' %}" alt="" />
+              <p class="fs-5 fw-bold p-0 m-0">Member</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

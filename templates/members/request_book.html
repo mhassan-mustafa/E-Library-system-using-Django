@@ -1,0 +1,36 @@
+{% extends 'members/base.html' %}
+{% load static %}
+
+{% block content %}
+  {% if email_sent %}
+    <div class="text-center">
+      <img class="my-5" src="{% static 'img/confirmation.gif' %}" height="200px" alt="" />
+      <p class="fs-4 mb-5">PDF is successfully sent to your Email...!!!.</p>
+      <a href="{% url 'members:view' book.id %}" class="btn btn-primary"><< Go back</a>
+    </div>
+  {% else %}
+    <div>
+      <h2 class="text-center pt-4">Request Book</h2>
+
+      <form method="post" action="{% url 'members:request' book.id %}" class="w-75 my-5 mx-auto">
+        {% csrf_token %}
+        <p class="mt-5 mb-3 fs-4">
+          We will send this Book <span class="fs-5"><b>{{ book.title }}</b></span> to your email <span class="fs-5"><b>{{ user_email }}</b></span>.
+        </p>
+        <p class="mb-5 fs-5">Please Confirm to proceed.</p>
+        <a href="{% url 'members:view' book.id %}" class="btn btn-primary float-start"><< Go back</a>
+        <button type="submit" class="btn btn-primary float-end me-5" onclick="showLoader()">Confirm Request >></button>
+      </form>
+    </div>
+    <div id="loader" class="d-none mx-auto text-center">
+      <img style="margin: 80px 0 0 100px;" src="{% static 'img/loader.gif' %}" height="100px" alt="Loading..." />
+      <p class="mt-5">Please Wait white we send email...</p>
+    </div>
+  {% endif %}
+
+  <script>
+    function showLoader() {
+      document.getElementById('loader').classList.remove('d-none')
+    }
+  </script>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'members/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="admin-login">
+  <div class="main-div text-center container pt-4">
+
+    <div class="login">
+      <p class="heading fs-2 fw-bold mb-5">Register</p>  
+      <form method="post">
+      {% csrf_token %}
+      {% if messages %}
+        {% for message in messages %}
+          {% comment %} {% if message_id == 3 %}
+            <div class="alert alert-success alert-dismissible fade show py-1 ps-3" role="alert">
+              {{ message }}
+              <button style="height: 5px; width: 5px;" type="button" class="btn-close p-1 m-2" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div> {% endcomment %}
+          {% if message_id == 2 %}
+            <div class="alert alert-danger alert-dismissible fade show py-1 ps-3" role="alert">
+              {{ message }}
+              <button style="height: 5px; width: 5px;" type="button" class="btn-close p-1 m-2" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% elif message_id == 1 %}
+            <div class="alert alert-primary alert-dismissible fade show py-1 ps-3" role="alert">
+              {{ message }}
+              <button style="height: 5px; width: 5px;" type="button" class="btn-close p-1 m-2" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      <div class="form-outline mb-2">
+        <label class="fs-5 fw-bold float-start">Name:</label>
+        <input type="text" name="name" class="input w-75 ps-3" />
+      </div>
+
+      <div class="form-outline mb-2">
+        <label class="fs-5 fw-bold float-start">Email-ID:</label>
+        <input type="text" name="email" class="input w-75 ps-3" />
+      </div>
+
+      <div class="form-outline mb-2">
+        <label class="fs-5 fw-bold float-start">Phone-No:</label>
+        <input type="text" name="phone" class="input w-75 ps-3" />
+      </div>
+
+      <div class="form-outline mb-2">
+        <label class="fs-5 fw-bold float-start">Password:</label>
+        <input type="password" name="password" class="input w-75 ps-3" />
+      </div>
+
+      <div class="text-center mb-4">
+        <p>
+          Already have an account ? <a href="{% url 'members:login' %}">Login</a>
+        </p>
+        <button type="submit" class="btn btn-primary w-25">register</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

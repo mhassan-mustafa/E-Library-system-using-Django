@@ -1,0 +1,39 @@
+{% extends 'members/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h2 class="text-center pt-4">View book</h2>
+    <a href={% url "members:home" %}><button class="btn btn-primary"><< Back to Home_page</button></a>
+
+    <div class="row mt-5">
+      <div class="col-3 p-5 pt-0 text-center">
+        <img class="img-fluid shadow" src="{{ book.image.url }}" alt="Book Image" />
+        <a href="{% url "members:request" book.id %}" type="button" class="btn btn-primary mt-4">Request PDf</a>
+      </div>
+
+      <div class="col-6 pt-3 card px-4 shadow position-static">
+        <div class="mb-1">
+          <label for="exampleInputEmail1" class="form-label"><u>Title</u>:-</label>
+          <p class="ms-5 ps-5 fw-bold">{{ book.title }}</p>
+        </div>
+        <div class="mb-1">
+          <label for="exampleInputPassword1" class="form-label"><u>Author</u>:-</label>
+          <p class="ms-5 ps-5 fw-bold">{{ book.author }}</p>
+        </div>
+        <div class="mb-1">
+          <label for="exampleInputPassword1" class="form-label"><u>ISBN_No</u>:-</label>
+          <p class="ms-5 ps-5 fw-bold">{{ book.isbn }}</p>
+        </div>
+        <div class="mb-1">
+          <label for="exampleInputPassword1" class="form-label"><u>Rating</u>:-</label>
+          <p class="ms-5 ps-5 fw-bold">{{ book.rating }} Stars</p>
+        </div>
+        <div class="mb-1">
+          <label for="exampleInputPassword1" class="form-label"><u>Pages</u>:-</label>
+          <p class="ms-5 ps-5 fw-bold">{{ book.pages }}</p>
+        </div>
+
+        <div class="col-3"></div>
+      </div>
+    </div>
+{% endblock %}

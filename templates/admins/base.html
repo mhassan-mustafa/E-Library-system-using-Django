@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/all.min.css' %}" rel="stylesheet" />
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <!-- navbar -->
+
+    <nav class="navbar navbar-expand navbar-light w-100 bg-info shadow position-fixed">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav mx-auto mx-md-0">
+            <p class="nav-title navbar-brand fw-bold m-0 me-5" href="#">E-LIBRARY</p>
+            <div class="container">
+              <a class="nav-link text-black px-4 float-start d-none d-md-block" href={% url "index" %}>HOME</a>
+              <a class="nav-link text-black px-4 float-start d-none d-md-block" href={% url "about" %}>ABOUT</a>
+              <a class="nav-link text-black px-4 float-start d-none d-md-block" href={% url 'contact' %}>CONTACT</a>
+            </div>
+          </div>
+        </div>
+  {% if title != 'Welcome' and title != 'Admin Login'  %}
+  {% if request.user.is_authenticated %}
+
+  <div class="float-end me-4">
+<img src="{% static 'img/profile.png' %}" height="35px" alt="">
+<p class="fw-bold mx-1 d-inline">{{request.user.name}}</p>
+<div class="btn-group">
+  <i class="fa-solid fa-caret-down" style="cursor: pointer;" data-bs-toggle="dropdown" aria-expanded="false"></i>
+  <ul style="margin: 20px 0 0 -150px;" class="dropdown-menu">
+    <li><a class="dropdown-item" href={% url "admins:change_password" %}>Change Password</a></li>
+    <li class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href={% url "admins:admin_logout" %}>Logout</a></li>
+  
+  </ul>
+</div>
+</div>
+
+  {% else %}
+    <a href={% url "admins:admin_login" %} class="btn bg-primary text-white float-end me-4">Login</a>
+  {% endif %}
+  {% endif %}
+
+    </div>
+    </nav>
+    <div class="container pt-5">
+      {% block content %}
+
+      {% endblock %}
+    </div>
+
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  </body>
+</html>

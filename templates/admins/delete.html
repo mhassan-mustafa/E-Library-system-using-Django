@@ -1,0 +1,15 @@
+{% extends 'admins/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h2 class="text-center pt-4">Delete book</h2>
+
+    <form method="post" class="w-75 mt-5 pt-5 mx-auto">
+      {% csrf_token %}
+      <p class="my-5 fs-4">
+        Do You Want to delete this book "<b>{{ book.title }}</b>"..?
+      </p>
+      <a href="{% url 'admins:home' %}" class="btn btn-primary float-start"><< Go back</a>
+      <button type="submit" class="btn btn-primary float-end me-5">Yes, Delete this Book >></button>
+    </form>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'members/base.html' %}
+{% load static %}
+
+{% block content %}
+  <h3 class="text-center pt-4">Books List</h3>
+
+  <div class="my-5 w-50 mx-auto">
+    <form>
+      <div class="row mb-2">
+        <div class="col">
+          <input type="text" class="form-control" name="search" placeholder="Search Book" />
+        </div>
+        <button type="submit" class="col-2 btn btn-primary">Search</button>
+      </div>
+    </form>
+  </div>
+  {% if search %}
+    {% if quantity == 0 %}
+      <p class="text-center" style="color: red;">(Sorry, no book available for this search.)</p>
+    {% elif quantity == 1 %}
+      <p class="text-center">
+        (Only <b>{{ quantity }}</b> book available for this search.)
+      </p>
+    {% elif quantity > 1 %}
+      <p class="text-center">
+        (<b>{{ quantity }}</b> books available for this search.)
+      </p>
+    {% endif %}
+  {% else %}
+    <p class="text-center">
+      (Total <b style="font-size: 18px;">{{ quantity }}</b> books available in library)
+    </p>
+  {% endif %}
+
+  <div class="mx-auto mt-3">
+    <table class="table table-bordered w-100">
+      <thead>
+        <tr>
+          <th scope="col">Cover</th>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col">ISBN_No</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for book in books %}
+          <tr>
+            <td style="word-wrap: break-word; max-width: 20px;">
+              <img class="img-fluid" src="{{ book.image.url }}" alt="" />
+            </td>
+            <td style="word-wrap: break-word; max-width: 150px;">{{ book.title }}</td>
+            <td style="word-wrap: break-word; max-width: 150px;">{{ book.author }}</td>
+            <td style="word-wrap: break-word; max-width: 150px;">{{ book.isbn }}</td>
+            <td>
+              <div class="text-center">
+                <a href="{% url 'members:view' book.id %}"><button class="btn btn-primary">View Details >></button></a>
+              </div>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

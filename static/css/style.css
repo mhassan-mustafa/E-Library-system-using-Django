@@ -1,0 +1,90 @@
+/* navbar */
+
+.navlogo {
+    height: 40px;
+}
+
+.nav-title {
+    font-size: 17px;
+}
+
+.navbar a:hover {
+    background-color: #00a9cb;
+}
+
+/* home page */
+
+.home .main-div .buttons img {
+    height: 60px;
+    opacity: 0.8;
+}
+
+.home .main-div .person {
+    border-radius: 15px;
+    transition: transform 1s ease;
+    background-color: #aaf1ff;
+    width: 150px;
+}
+
+.home .main-div .person:hover {
+    transform: scale(1.1);
+    transition: transform 0.5s ease;
+}
+
+/* about page */
+
+.about .main-div .about-div {
+    border-radius: 20px;
+    width: 80%;
+    margin: 40px auto 0 auto;
+    background-color: #99eeff;
+}
+
+/* back to home button */
+
+.back-home{
+    position: absolute;
+    top: 75px;
+    left: 20px;
+}
+
+.back-home a{
+    position: static;
+    color: black;
+}
+
+.back-home a:hover{
+    color: #009fbe;
+}
+
+/* admin login */
+
+.admin-login .main-div .login {
+    padding: 15px 140px;
+    border-radius: 20px;
+    width: 60%;
+    margin: 40px auto 0 auto;
+    background-image: linear-gradient(#efefef, #aaf1ff);
+}
+
+.admin-login .main-div .login .input {
+    border: none;
+    border-bottom: 2px solid #00cef7;
+    border-radius: 7px;
+    outline: none;
+    background: none;
+    margin-left: 100px;
+    margin-bottom: 45px;
+}
+
+.admin-login .main-div .login .login-btn {
+    width: 30%;
+    background-color: #0DCAF0;
+    height: 35px;
+    transition: all 0.5s;
+}
+
+.admin-login .main-div .login .login-btn:hover {
+    background-color: #47e0ff;
+    transition: all 0.5s;
+}
