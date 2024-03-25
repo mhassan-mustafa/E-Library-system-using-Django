@@ -31,7 +31,7 @@ python manage.py runserver
 
 4. **Integrating Email System**:
 
-Integrate the email system for OTP verification and sending book request notifications
+-Integrate the email system for OTP verification and sending book request notifications
 
 Open the `e_library/settings.py` file in your Django project.
 
