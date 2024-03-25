@@ -31,19 +31,19 @@ python manage.py runserver
 
 4. **Integrating Email System**:
 
-To integrate the email system for OTP verification and sending book request notifications, follow these steps:
+Integrate the email system for OTP verification and sending book request notifications
 
-1. Open the `e_library/settings.py` file in your Django project.
+Open the `e_library/settings.py` file in your Django project.
 
-2. Modify the email settings according to your email provider's specifications:
+Modify the following settings according to your email provider's specifications:
 
 ```python
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587  # Change this port number according to your email provider's requirements
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'your_email@gmail.com'  # Replace 'your_email@gmail.com' with your actual email address
-EMAIL_HOST_PASSWORD = 'your_password'  # Replace 'your_password' with your actual email password
+EMAIL_HOST_USER = 'example@gmail.com'  # Replace 'example@gmail.com' with your email address
+EMAIL_HOST_PASSWORD = 'your_password'  # Replace 'your_password' with your 16 charater pin
 ```
 
 
@@ -58,6 +58,6 @@ EMAIL_HOST_PASSWORD = 'your_password'  # Replace 'your_password' with your actua
 - **urls.py**: Defines URL patterns for routing requests to views.
 - **templates/**: Contains HTML templates for rendering views.
 - **static/**: Holds static assets like CSS, JavaScript, and images.
-- **README.md**: Documentation file providing an overview, features, usage instructions, and file structure.
+- **README.md**: Documentation file providing an overview, features, usage instructions.
 - **requirements.txt**: List of dependencies required for the project.
 
