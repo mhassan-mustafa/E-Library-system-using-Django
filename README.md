@@ -14,7 +14,7 @@ This project is a dynamic E-Library web application developed using Django, aime
 ## Usage
 1. **Clone the repository**:
 ```bash
-git clone <repository_url>
+git clone <https://github.com/mhassan-mustafa/E-Library-system-using-Django>
 cd e-library-django
 ```
 
